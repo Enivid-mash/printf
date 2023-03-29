@@ -1,13 +1,12 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
 #include <limits.h>
+#include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-/* Flag modifier macros */
+/* Flag Modifier Macros */
 #define PLUS 1
 #define SPACE 2
 #define HASH 4
@@ -19,17 +18,16 @@
 #define ZERO_FLAG ((flags >> 3) & 1)
 #define NEG_FLAG ((flags >> 4) & 1)
 
-/* Length Modifer Macros */
+/* Length Modifier Macros */
 #define SHORT 1
 #define LONG 2
 
 /**
- * struct buffer_s - A new type defining a buffer struc.
+ * struct buffer_s - A new type defining a buffer struct.
  * @buffer: A pointer to a character array.
  * @start: A pointer to the start of buffer.
  * @len: The length of the string stored in buffer.
  */
-
 typedef struct buffer_s
 {
 	char *buffer;
@@ -39,19 +37,18 @@ typedef struct buffer_s
 
 /**
  * struct converter_s - A new type defining a converter struct.
- * @specifier: A character representing a conversion specifer.
- * @func: A pointer to a conversionfunction corresponding to specifer.
+ * @specifier: A character representing a conversion specifier.
+ * @func: A pointer to a conversion function corresponding to specifier.
  */
-
 typedef struct converter_s
 {
 	unsigned char specifier;
 	unsigned int (*func)(va_list, buffer_t *,
-			unsigned char, int, unsigned char);
-} conveter_t;
+			unsigned char, int, int, unsigned char);
+} converter_t;
 
 /**
- * struct flag_s - A new type of defining flags struct.
+ * struct flag_s - A new type defining a flags struct.
  * @flag: A character representing a flag.
  * @value: The integer value of the flag.
  */
@@ -98,7 +95,8 @@ int handle_width(va_list args, const char *modifier, char *index);
 int handle_precision(va_list args, const char *modifier, char *index);
 unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		unsigned char, int, int, unsigned char);
-/* Modifiers*/
+
+/* Modifiers */
 unsigned int print_width(buffer_t *output, unsigned int printed,
 		unsigned char flags, int wid);
 unsigned int print_string_width(buffer_t *output,
@@ -114,4 +112,5 @@ unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 		unsigned char flags, int wid, int prec);
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base,
 		unsigned char flags, int wid, int prec);
-#endif /*MAIN_H*/
+
+#endif /* MAIN_H */
