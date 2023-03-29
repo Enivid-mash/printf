@@ -79,7 +79,7 @@ unsigned int convert_u(va_list args, buffer_t *output,
 unsigned int convert_o(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_x(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec,unsigned char len);
+		unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_X(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_S(va_list args, buffer_t *output,
@@ -103,7 +103,7 @@ unsigned int print_width(buffer_t *output, unsigned int printed,
 		unsigned char flags, int wid);
 unsigned int print_string_width(buffer_t *output,
 		unsigned char flags, int wid, int prec, int size);
-unsigned int print_neg_width(buffer_t *output,unsigned int printed,
+unsigned int print_neg_width(buffer_t *output, unsigned int printed,
 		unsigned char flags, int wid);
 
 /* Helper Functions */
@@ -113,5 +113,5 @@ unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n);
 unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 		unsigned char flags, int wid, int prec);
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base,
-		unsigned char flags, int wid,int prec);
+		unsigned char flags, int wid, int prec);
 #endif /*MAIN_H*/
